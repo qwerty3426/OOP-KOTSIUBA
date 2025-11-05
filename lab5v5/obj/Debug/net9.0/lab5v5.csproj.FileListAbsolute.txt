@@ -1,0 +1,14 @@
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab5v5\lab5v5\bin\Debug\net9.0\lab5v5.exe
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab5v5\lab5v5\bin\Debug\net9.0\lab5v5.deps.json
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab5v5\lab5v5\bin\Debug\net9.0\lab5v5.runtimeconfig.json
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab5v5\lab5v5\bin\Debug\net9.0\lab5v5.dll
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab5v5\lab5v5\bin\Debug\net9.0\lab5v5.pdb
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab5v5\lab5v5\obj\Debug\net9.0\lab5v5.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab5v5\lab5v5\obj\Debug\net9.0\lab5v5.AssemblyInfoInputs.cache
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab5v5\lab5v5\obj\Debug\net9.0\lab5v5.AssemblyInfo.cs
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab5v5\lab5v5\obj\Debug\net9.0\lab5v5.csproj.CoreCompileInputs.cache
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab5v5\lab5v5\obj\Debug\net9.0\lab5v5.dll
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab5v5\lab5v5\obj\Debug\net9.0\refint\lab5v5.dll
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab5v5\lab5v5\obj\Debug\net9.0\lab5v5.pdb
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab5v5\lab5v5\obj\Debug\net9.0\lab5v5.genruntimeconfig.cache
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab5v5\lab5v5\obj\Debug\net9.0\ref\lab5v5.dll
