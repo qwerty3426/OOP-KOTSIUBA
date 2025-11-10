@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\artem\\OneDrive\\Desktop\\OOP- МОЄ\\OOP-Kotsiuba\\lab5v5\\lab5v5\\lab5v5.csproj",
+      "projectUniqueName": "C:\\Users\\artem\\OneDrive\\Desktop\\OOP- МОЄ\\OOP-Kotsiuba\\Lab5\\lab5v5.csproj",
       "projectName": "lab5v5",
-      "projectPath": "C:\\Users\\artem\\OneDrive\\Desktop\\OOP- МОЄ\\OOP-Kotsiuba\\lab5v5\\lab5v5\\lab5v5.csproj",
+      "projectPath": "C:\\Users\\artem\\OneDrive\\Desktop\\OOP- МОЄ\\OOP-Kotsiuba\\Lab5\\lab5v5.csproj",
       "packagesPath": "C:\\Users\\artem\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\artem\\OneDrive\\Desktop\\OOP- МОЄ\\OOP-Kotsiuba\\lab5v5\\lab5v5\\obj\\",
+      "outputPath": "C:\\Users\\artem\\OneDrive\\Desktop\\OOP- МОЄ\\OOP-Kotsiuba\\Lab5\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
