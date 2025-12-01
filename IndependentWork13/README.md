@@ -1,7 +1,7 @@
 # IndependentWork13: Кейси Polly/Retry/Timeout/Circuit Breaker
 
 ## Скриншот запуску програми
-![Скріншот](C:\Users\artem\OneDrive\Pictures\Screenshots\Знімок екрана 2025-12-01 232449.png)
+!![Скріншот](screenshot.png)
 
 ## Опис проєкту
 Проєкт демонструє використання **Polly** для підвищення відмовостійкості у .NET:
