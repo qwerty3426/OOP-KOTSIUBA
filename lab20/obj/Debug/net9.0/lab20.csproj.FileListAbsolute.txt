@@ -1,0 +1,15 @@
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab20\bin\Debug\net9.0\lab20.exe
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab20\bin\Debug\net9.0\lab20.deps.json
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab20\bin\Debug\net9.0\lab20.runtimeconfig.json
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab20\bin\Debug\net9.0\lab20.dll
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab20\bin\Debug\net9.0\lab20.pdb
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab20\obj\Debug\net9.0\lab20.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab20\obj\Debug\net9.0\lab20.AssemblyInfoInputs.cache
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab20\obj\Debug\net9.0\lab20.AssemblyInfo.cs
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab20\obj\Debug\net9.0\lab20.csproj.CoreCompileInputs.cache
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab20\obj\Debug\net9.0\lab20.sourcelink.json
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab20\obj\Debug\net9.0\lab20.dll
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab20\obj\Debug\net9.0\refint\lab20.dll
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab20\obj\Debug\net9.0\lab20.pdb
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab20\obj\Debug\net9.0\lab20.genruntimeconfig.cache
+C:\Users\artem\OneDrive\Desktop\OOP- МОЄ\OOP-Kotsiuba\lab20\obj\Debug\net9.0\ref\lab20.dll
