@@ -1,84 +1,167 @@
-God Object (коротко і просто)
+# Звіт з аналізу SOLID принципів (SRP, OCP) в Open-Source проєкті
 
-God Object — це ситуація, коли один клас робить майже все в програмі. У ньому зберігається багато даних і логіки, які насправді мали б бути розділені між різними класами.
+## 1. Обраний проєкт
 
-Такий клас:
+* **Назва:** ASP.NET Core
+* **GitHub:** [https://github.com/dotnet/aspnetcore](https://github.com/dotnet/aspnetcore)
+* **Стан коду:** актуальна гілка `main` (стан на 2026-01-18, код активно розвивається)
 
-виходить дуже великий;
+ASP.NET Core — великий open-source фреймворк на C#, що добре підходить для аналізу SOLID завдяки чіткій архітектурі, використанню інтерфейсів і шаблонів проєктування.
 
-важкий для розуміння;
+---
 
-його складно змінювати, бо будь-яка правка може щось зламати;
+## 2. Аналіз SRP (Single Responsibility Principle)
 
-часто порушує принцип SRP.
+### 2.1. Приклади дотримання SRP
 
-У результаті код стає заплутаним і незручним для підтримки.
+#### Клас: `Logger<T>`
 
-Приклад класу з порушенням SRP
-class UserManager
+* **Відповідальність:** Запис логів для конкретного типу `T`.
+* **Обґрунтування:**
+
+  * Клас не займається зберіганням логів, форматуванням чи вибором місця запису.
+  * Він лише делегує виклики провайдеру логування.
+
+```csharp
+public class Logger<T> : ILogger<T>
 {
-    public void RegisterUser(string name)
+    private readonly ILogger _logger;
+
+    public Logger(ILoggerFactory factory)
     {
-        Console.WriteLine("User registered: " + name);
+        _logger = factory.CreateLogger(typeof(T));
     }
 
-    public void SaveUser(string name)
+    public void Log<TState>(LogLevel logLevel, EventId eventId,
+        TState state, Exception exception, Func<TState, Exception, string> formatter)
     {
-        Console.WriteLine("User saved to database: " + name);
-    }
-
-    public void SendEmail(string name)
-    {
-        Console.WriteLine("Email sent to user: " + name);
+        _logger.Log(logLevel, eventId, state, exception, formatter);
     }
 }
+```
 
-У чому проблема
+Єдина причина для зміни цього класу — зміна способу делегування логування.
 
-Цей клас:
+---
 
-реєструє користувача;
+#### Клас: `HttpContext`
 
-зберігає його в базу;
+* **Відповідальність:** Представлення контексту одного HTTP-запиту.
+* **Обґрунтування:**
 
-надсилає повідомлення.
+  * Містить лише дані та сервіси, пов’язані з конкретним запитом.
+  * Бізнес-логіка обробки запиту винесена в middleware та контролери.
 
-Тобто він виконує кілька різних задач одразу, через що порушується принцип Single Responsibility Principle.
+---
 
-Як це виправити (рефакторинг)
+### 2.2. Приклад порушення SRP
 
-Краще розділити логіку на окремі класи, де кожен відповідає тільки за одну річ.
+#### Клас: `Startup` (типова реалізація в проєктах ASP.NET Core)
 
-class UserService
+* **Множинні відповідальності:**
+
+  * Конфігурація сервісів (DI).
+  * Конфігурація HTTP pipeline.
+  * Іноді — логіка вибору середовища (dev/prod).
+
+```csharp
+public class Startup
 {
-    public void Register(string name)
+    public void ConfigureServices(IServiceCollection services)
     {
-        Console.WriteLine("User registered: " + name);
+        services.AddControllers();
+        services.AddDbContext<AppDbContext>();
+    }
+
+    public void Configure(IApplicationBuilder app)
+    {
+        app.UseRouting();
+        app.UseEndpoints(endpoints => endpoints.MapControllers());
     }
 }
+```
 
-class UserRepository
+* **Проблеми:**
+
+  * Клас змінюється з багатьох причин.
+  * У великих проєктах перетворюється на «God Object».
+
+---
+
+## 3. Аналіз OCP (Open/Closed Principle)
+
+### 3.1. Приклади дотримання OCP
+
+#### Сценарій: Middleware Pipeline
+
+* **Механізм розширення:** Інтерфейс `IMiddleware` та делегати.
+* **Обґрунтування:**
+
+  * Для додавання нової поведінки не потрібно змінювати існуючі middleware.
+  * Достатньо створити новий клас і підключити його.
+
+```csharp
+public class CustomMiddleware
 {
-    public void Save(string name)
+    private readonly RequestDelegate _next;
+
+    public CustomMiddleware(RequestDelegate next)
     {
-        Console.WriteLine("User saved to database: " + name);
+        _next = next;
+    }
+
+    public async Task InvokeAsync(HttpContext context)
+    {
+        // нова логіка
+        await _next(context);
     }
 }
+```
 
-class EmailService
+---
+
+#### Сценарій: Логування (`ILogger`)
+
+* **Механізм розширення:** Інтерфейси та провайдери (`ILoggerProvider`).
+* **Обґрунтування:**
+
+  * Можна додати новий спосіб логування (файл, БД, хмара) без зміни існуючого коду.
+
+---
+
+### 3.2. Приклад порушення OCP
+
+#### Сценарій: Обробка типів конфігурацій через `switch`
+
+```csharp
+public void HandleConfig(string type)
 {
-    public void Send(string name)
+    switch (type)
     {
-        Console.WriteLine("Email sent to user: " + name);
+        case "json": LoadJson(); break;
+        case "xml": LoadXml(); break;
+        case "yaml": LoadYaml(); break;
     }
 }
+```
 
-Чому так краще
+* **Проблема:**
 
-код легше читати;
+  * Додавання нового формату потребує зміни методу.
+* **Наслідки:**
 
-кожен клас має одне призначення;
+  * Порушення OCP.
+  * Погіршення тестованості та розширюваності.
 
-простіше вносити зміни;
+Краще рішення — Strategy або Factory з інтерфейсом.
 
-зменшується шанс появи God Object.
+---
+
+## 4. Загальні висновки
+
+* ASP.NET Core загалом добре дотримується SRP та OCP.
+* Основні механізми розширення побудовані на інтерфейсах і DI.
+* Порушення принципів здебільшого з’являються на рівні прикладного коду.
+* Дотримання SRP та OCP значно підвищує підтримуваність і масштабованість системи.
+
+**Висновок:** Архітектура ASP.NET Core є якісним прикладом практичного застосування SOLID у великому open-source проєкті.
