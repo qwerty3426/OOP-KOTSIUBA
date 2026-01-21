@@ -16,7 +16,7 @@
 
 > Один клас виконує забагато функцій, що порушує SRP.
 
-```csharp
+{
 public class OrderProcessor
 {
     public void Process(Order order)
@@ -26,7 +26,7 @@ public class OrderProcessor
         SendEmail(order);
     }
 }
-
+}
 Рефакторинг (дотримання SRP)
 
 ## Логіка розділена на окремі класи, кожен із яких відповідає за одну задачу:
@@ -58,7 +58,9 @@ public class OrderService
         _repository.Save(order);
         _emailService.Send(order);
     }
-} Демонстрація роботи
+} 
+
+Демонстрація роботи
 ![alt text](image-2.png)
 ## Висновок
 
@@ -70,4 +72,4 @@ public class OrderService
 
 робить код більш гнучким завдяки DIP
 ## UML-діаграма 
-![alt text](image-3.png)
+![alt text](image-1.png)
