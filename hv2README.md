@@ -12,21 +12,7 @@ LSP (Liskov Substitution Principle) — принцип підстановки Л
 
 🔹 Поганий приклад (порушення LSP)
 Приклад 1: Птахи
-class Bird
-{
-    public virtual void Fly()
-    {
-        Console.WriteLine("Я лечу!");
-    }
-}
-
-class Penguin : Bird
-{
-    public override void Fly()
-    {
-        throw new Exception("Пінгвіни не можуть літати");
-    }
-}
+![alt text](image.png)
 
 
 Проблема:
@@ -36,21 +22,7 @@ Penguin не може замінити Bird без помилки.
 Код, який працює з Bird, ламається для пінгвінів.
 
 Приклад 2: Банківські рахунки
-class Account
-{
-    public virtual void Withdraw(decimal amount)
-    {
-        Console.WriteLine("Знято гроші");
-    }
-}
-
-class FixedDeposit : Account
-{
-    public override void Withdraw(decimal amount)
-    {
-        throw new Exception("Не можна знімати гроші до закінчення терміну");
-    }
-}
+![alt text](image-1.png)
 
 
 Проблема:
@@ -64,32 +36,12 @@ FixedDeposit не підтримує очікувану поведінку Withd
 Розділяємо класи, щоб підкласи не ламали базову поведінку:
 
 Птахи
-class Bird { }
-
-class FlyingBird : Bird
-{
-    public virtual void Fly()
-    {
-        Console.WriteLine("Я лечу!");
-    }
-}
+![alt text](image-2.png)
 
 class Penguin : Bird { }
 
 Банківські рахунки
-class Account { }
-
-class WithdrawableAccount : Account
-{
-    public virtual void Withdraw(decimal amount)
-    {
-        Console.WriteLine("Знято гроші");
-    }
-}
-
-class FixedDeposit : Account { }
-
-
+![alt text](image-3.png)
 Тепер:
 
 всі підкласи безпечно замінюють базові класи;
