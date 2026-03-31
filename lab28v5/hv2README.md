@@ -1,0 +1,112 @@
+Домашня робота №2 — LSP: приклади порушень
+
+Камії-Максим Теа
+
+🔹 Опис
+
+LSP (Liskov Substitution Principle) — принцип підстановки Ліскова: підкласи повинні повністю замінювати базові класи без зміни очікуваної поведінки.
+
+Проблема:
+
+Якщо підклас змінює поведінку базового класу або викликає помилки, код, який працює з базовим класом, ламається.
+
+Це робить ієрархії класів небезпечними і складними для підтримки.
+
+🔹 Поганий приклад (порушення LSP)
+Приклад 1: Птахи
+class Bird
+{
+    public virtual void Fly()
+    {
+        Console.WriteLine("Я лечу!");
+    }
+}
+
+class Penguin : Bird
+{
+    public override void Fly()
+    {
+        throw new Exception("Пінгвіни не можуть літати");
+    }
+}
+
+
+Проблема:
+
+Penguin не може замінити Bird без помилки.
+
+Код, який працює з Bird, ламається для пінгвінів.
+
+Приклад 2: Банківські рахунки
+class Account
+{
+    public virtual void Withdraw(decimal amount)
+    {
+        Console.WriteLine("Знято гроші");
+    }
+}
+
+class FixedDeposit : Account
+{
+    public override void Withdraw(decimal amount)
+    {
+        throw new Exception("Не можна знімати гроші до закінчення терміну");
+    }
+}
+
+
+Проблема:
+
+FixedDeposit не підтримує очікувану поведінку Withdraw.
+
+Код, який працює з Account, може зламатися.
+
+🔹 Як зробити правильно (дотримання LSP)
+
+Розділяємо класи, щоб підкласи не ламали базову поведінку:
+
+Птахи
+class Bird { }
+
+class FlyingBird : Bird
+{
+    public virtual void Fly()
+    {
+        Console.WriteLine("Я лечу!");
+    }
+}
+
+class Penguin : Bird { }
+
+Банківські рахунки
+class Account { }
+
+class WithdrawableAccount : Account
+{
+    public virtual void Withdraw(decimal amount)
+    {
+        Console.WriteLine("Знято гроші");
+    }
+}
+
+class FixedDeposit : Account { }
+
+
+Тепер:
+
+всі підкласи безпечно замінюють базові класи;
+
+код, який працює з базовими класами, не викликає помилок;
+
+поведінка передбачувана.
+
+🔹 Висновок
+
+Порушення LSP робить підкласи небезпечними для заміни базових класів.
+Дотримання LSP забезпечує:
+
+передбачувану поведінку;
+
+легке тестування;
+
+гнучкість та безпечну ієрархію класів.
