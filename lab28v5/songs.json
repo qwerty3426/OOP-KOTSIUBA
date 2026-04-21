@@ -1,0 +1,24 @@
+[
+  {
+    "Id": 1,
+    "Title": "Bohemian Rhapsody",
+    "DurationSeconds": 354,
+    "ArtistId": 0,
+    "Artist": {
+      "Id": 1,
+      "Name": "Queen",
+      "Genre": "Rock"
+    }
+  },
+  {
+    "Id": 2,
+    "Title": "Don\u0027t Stop Me Now",
+    "DurationSeconds": 209,
+    "ArtistId": 0,
+    "Artist": {
+      "Id": 1,
+      "Name": "Queen",
+      "Genre": "Rock"
+    }
+  }
+]
